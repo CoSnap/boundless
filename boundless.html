@@ -1,0 +1,899 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+
+	<!--
+	Boundless - 2.1
+	Designd by Sam Stefan.
+	samstefan.co.uk
+	-->
+
+	<title>{Title}</title>
+	
+	<!-- Favicon --> 
+	<link rel="shortcut icon" href="{Favicon}"/>
+	
+	<!-- RSS --> 
+	<link rel="alternate" type="application/rss+xml" href="{RSS}"/>
+	 
+	<!-- Meta Tags -->
+	{block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<!-- Stylesheets --> 
+	<link rel="stylesheet" type="text/css" href="http://static.tumblr.com/ubkenek/3sQlmxy8v/reset-min.css"/>
+	<link rel="stylesheet" type="text/css" href="http://static.tumblr.com/ubkenek/Xxrlrw4re/fonts.css"/>
+
+	<!-- JavaScript -->
+	<script type="text/javascript" src="http://static.tumblr.com/gpln05e/ao8kyw205/jquery-1.4.2.min.js"></script>
+	{block:IfInfiniteScroll}<script type="text/javascript" src="http://static.tumblr.com/ubkenek/ul4ljjlod/scroll.js"></script>{/block:IfInfiniteScroll}
+
+	<style type="text/css">
+	
+	/*========================================================
+		Basics
+	========================================================*/
+	
+	html, body {
+		background: url('http://static.tumblr.com/ubkenek/2I9lotglq/bg.jpg') repeat;
+		height: 100%;
+		color: rgb(82,82,82);
+		font-family: Helvetica, Arial, Sans-Serif;
+		font-size: 13px;
+		text-shadow: 1px 1px 0px rgb(224,227,232); }
+	
+	#Wrapper { width: 780px; margin: 0 auto; }
+	#Header, #Body, #Footer, #Posts { width: 780px; margin: 0 10px 0 10px; clear: both; display: block; }
+	
+	a:link, a:visited { color: rgb(94,160,186); text-decoration: underline; position: relative; }
+	a:hover { color: rgb(63,63,63); text-decoration: none; }
+	
+	.Clearfix:after { content: ".";	display: block;	clear: both; visibility: hidden; line-height: 0; height: 0; }
+	.Clearfix { display: inline-block; }
+	html[xmlns] .Clearfix { display: block; }
+	* html .Clearfix { height: 1%; }
+		
+	#Posts b { font-weight: bold; }
+	#Posts em { font-style: italic; } 
+	
+	#BlogTitle { text-shadow: 0 -1px 1px rgba(255,255,255,0.01); }
+	#Description, .PostBody { line-height: 1.3 }
+	
+	b { font-weight: bold; }
+	em { font-style: italic; }
+	
+	/*========================================================
+		Header
+	========================================================*/
+
+	#Header { background: url(http://static.tumblr.com/ubkenek/9nPlpet6p/headerbg.png) no-repeat 140px -57px; padding: 40px 0 0 0; }
+
+	#InfoButton { 
+		width: 20px;
+		height: 20px;
+		background: url(http://static.tumblr.com/ubkenek/OEolpd9t3/infoicon.jpg) no-repeat;
+		margin: 0 auto;
+		clear: both;
+		display: block;
+		position: relative; }
+		
+	#InfoButton:active { top:1px; }
+	
+	#BlogTitle, #SubTitle {
+		width: 780px;
+		margin: 20px auto 0 auto;
+		text-align: center;
+		width: auto; }
+		
+	#BlogTitle a {
+		font-family:'BebasNeueRegular', Arial, sans-serif;
+		font-size: 113px;
+		color: rgb(73,93,100);
+		text-decoration: none; }
+	
+	@-moz-document url-prefix() { #BlogTitle a { font-size: 100px; } }
+	
+	#BlogTitle a:hover { color: rgb(62,62,62); }
+	
+	#SubTitle {
+		margin: 20px auto 0 auto;
+		font-family: Georgia, 'Times New Roman', serif;
+		font-style: italic;
+		font-size: 14px; }
+	
+	/*========================================================
+		SlideDown
+	========================================================*/
+
+	#SlideDown { width: 780px; margin: 20px auto 0 auto; padding: 0 0 20px 0; }
+	.Line { width: 100%; height: 3px; clear: both; background: rgb(143,158,165); }
+
+	#ProfilePhoto { 
+		width: 136px;
+		height: 140px;
+		float: left;
+		clear: none;
+		margin: 0 35px 0 0;
+		background: url('http://static.tumblr.com/ubkenek/xRilowyzo/profilephotobg.jpg'); }
+		
+	#ProfilePhoto img { height: 106px; width: 106px; margin: 16px 15px; }
+	
+	#DescriptionTitle {	font-size: 18px; font-weight: bold; margin-bottom: 5px;	}
+	#Description {	width: 220px; float: left; clear: none;  margin: 10px 0 0 0; }
+	
+	#Links { width: 300px; float: left; clear: none; margin: 38px 0 0 89px; }
+	
+	#SocialLinks, #MetaLinks { width: 140px; float: left; clear: none; }
+	#MetaLinks { margin: 0 0 0 20px; }
+	#Links a, .PostTags a {
+		float: left;
+		clear: both;
+		margin: 0 0 5px 0;
+		padding: 4px 7px;
+		border: 1px solid rgb(184,189,193);
+		color: rgb(62,62,62);
+		background-color: rgb(196,203,209);
+		font-weight: bold;
+		text-decoration: none;
+		opacity: 0.7;
+					
+		-webkit-border-radius: 4px;
+		   -moz-border-radius: 4px;
+		        border-radius: 4px; }
+	
+	#Links a:hover, .PostTags a:hover { opacity: 1; }
+	
+	#RSSFeed {padding: 4px 7px 4px 25px !important; background: url(http://static.tumblr.com/ubkenek/WIdlox3ak/rssfeedicon.jpg) 7px 5px no-repeat;}
+	#Archive {padding: 4px 7px 4px 25px !important; background: url(http://static.tumblr.com/ubkenek/z7Oloy2gk/archiveicon.jpg) 7px 5px no-repeat;}
+	#Ask {padding: 4px 7px 4px 25px !important; background: url(http://static.tumblr.com/ubkenek/17hloy3dk/askicon.jpg) 9px 5px no-repeat;}
+
+	/*========================================================
+		Page Content
+	========================================================*/
+	
+	#Body { margin: 40px 10px 0 10px; }
+	#Body p { clear: both; margin: 0 0 10px 0; }
+	
+	#Posts ul { margin-bottom: 10px; }
+	#Posts li { list-style: disc; padding-left: 10px; margin: 0 0 10px 18px; }
+	#Posts blockquote { border-left: solid 1px rgb(88,88,89); margin-bottom: 10px; padding-left: 20px; }
+	
+	.PostTitle {
+		width: 780px;
+		float: left;
+		clear: both;
+		margin: 0 0 20px 0;
+		font-size: 25px;
+		font-weight: bold;
+		color: rgb(62,62,62);
+		text-decoration: none;
+		position: relative; }
+	
+	.PostTitle a:link, .PostTitle a:visited, .PostMeta a:link,
+	.PostMeta a:visited {
+		max-width: 540px;
+		float: left;
+		clear: both;
+		color: rgb(62,62,62);
+		text-decoration: none;
+		position: relative; }
+	
+	.PostTitle a:hover, .PostMeta a:hover { color: rgb(73,93,100); }
+	.PostTitle, .PostTitle a:active, .PostMeta a:active { top: 1px; }
+	.PostBody { width: 540px; float: left; }
+	
+	.PhotoPost, .TextPost, .LinkPost, .QuotePost, .ChatPost,
+	.VideoPost, .AudioPost, .AnswerPost, .PhotosetPost { 
+		width: 770px;
+		float: left;
+		clear: both;
+		margin: 0 0 30px 0; }
+	
+	.PhotoPost, .VideoPost { margin: 0 0 40px 0; }
+	
+	.Caption {
+		width: 780px;
+		float: left;
+		clear: both;
+		position: relative;
+		padding: 20px 0 10px;
+		border-top: 1px solid #e6e9eb;
+		background: #f1f1f1 url(http://static.tumblr.com/ubkenek/NNrls1ste/caption-background.jpg) repeat-x bottom; }
+
+	.Caption p { 
+		width: 740px;
+		margin: 0 16px 10px !important;
+		clear: none !important;
+		float: left; }
+
+	.CaptionLS, .CaptionRS  {
+		width: 8px;
+		height: 100%;
+		clear: none;
+		position: absolute; }
+
+	.CaptionLS {
+		float: left;
+		left: 0;
+		background: url(http://static.tumblr.com/ubkenek/RGwlrie87/caption-background-ls.jpg) repeat-y bottom;
+		margin: -20px 10px -10px 0; }
+
+	.CaptionRS {
+		float: right;
+		right: 0;
+		background: url(http://static.tumblr.com/ubkenek/p3Slriekv/caption-background-rs.jpg) repeat-y bottom;
+		margin: -20px 0 -10px 0; } 
+
+	.Media {
+		width: 778px;
+		float: left;
+		clear: both;
+		position: relative;
+		padding: 1px;
+		background: rgb(233,234,236);
+		-webkit-border-radius: 4px 4px 0 0;
+		   -moz-border-radius: 4px 4px 0 0;
+				border-radius: 4px 4px 0 0; }
+	
+	.MediaOverlay {
+		position: absolute;
+		z-index: 2;
+		width: 99.8%;
+		height: 99.8%;
+		float: left;
+		clear: both;
+		pointer-events:none;
+		
+		-webkit-border-radius: 4px 4px 0 0;
+		   -moz-border-radius: 4px 4px 0 0;
+				border-radius: 4px 4px 0 0;
+	
+		-webkit-box-shadow: inset 0 0 7px rgb(160,160,160);
+		   -moz-box-shadow: inset 0 0 7px rgb(160,160,160);
+		        box-shadow: inset 0 0 7px rgb(160,160,160); }	
+
+	.PhotoPost img {
+		width: 778px;
+	  	float: left;
+		-webkit-border-radius: 4px 4px 0 0;
+		   -moz-border-radius: 4px 4px 0 0;
+				border-radius: 4px 4px 0 0; }
+
+	.html_photoset {
+		width: 500px;
+		margin: 0 0 10px 0;
+		padding: 10px 10px 7px 10px;
+		background: #a9b6c3;
+
+		border: 1px solid #e8ebee;
+		-webkit-border-radius: 4px;
+		   -moz-border-radius: 4px;
+				border-radius: 4px;
+	
+		-webkit-box-shadow: inset 0 0 7px rgb(146,157,168);
+		   -moz-box-shadow: inset 0 0 7px rgb(146,157,168);
+		        box-shadow: inset 0 0 7px rgb(146,157,168); }
+	
+	.PostDivide {
+		width: 780px;
+		height: 4px;
+		background: url(http://static.tumblr.com/ubkenek/SD2lpgp9r/postbrake.jpg) no-repeat;
+		float: left;
+		clear: both;
+		margin: 0 0 40px 0; }
+
+	.MediaPostFooter {	
+		width: 780px;
+		height: 35px;
+		float: left;
+		clear: both;
+		background: url(http://static.tumblr.com/ubkenek/oLJlpfbpt/postfooterbg.jpg) repeat-x;
+		font-size: 11px;
+		text-transform: uppercase; 
+		font-weight: bold;
+		text-shadow: 1px 1px 0 white; }
+
+	.PostMeta { width: 140px; margin: 0 0 0 90px; float: right; clear: none; font-weight: bold; }
+	.PostDate, .PostNotes { padding: 0 0 0 30px; margin: 0 0 10px 0; color: rgb(62,62,62); }
+	.PostTags { float: left; clear: both; margin: 10px 0 0 0; }
+	.PostDate { background: url(http://static.tumblr.com/ubkenek/VBylph1e2/postdateicon.jpg) no-repeat; }
+	.PostNotes { background: url(http://static.tumblr.com/ubkenek/MZJlph3w6/likesicon.jpg) no-repeat; }
+
+	.MediaPostFooter a:link, .MediaPostFooter a:visited { text-decoration: none; color: #6c6c6c; }
+	.MediaPostFooter a:hover { color: #3E3E3E; }
+
+	.MediaPostFooterLS, .MediaPostFooterRS { width: 5px; height: 35px; clear: none; }
+	.MediaPostFooterLS { float: left; background: url(http://static.tumblr.com/ubkenek/Jidlpfbmk/postfooterls.jpg) no-repeat; }
+	.MediaPostFooterRS { float: right; background: url(http://static.tumblr.com/ubkenek/kkClpfbt9/postfooterrs.jpg) no-repeat; }
+	
+	.MediaPostFooter .PostDate, .MediaPostFooterTags,
+	.MediaPostFooterNotes { padding: 1px 0 0 20px; margin: 10px 10px; float: left; font-weight: bold; }
+	.MediaPostFooter .PostDate { background: url(http://static.tumblr.com/ubkenek/jTElrklq3/date-posted-icon.png) no-repeat; }
+	.MediaPostFooterTags { background: url(http://static.tumblr.com/ubkenek/nxdlrkqi8/tagg-icon.png) no-repeat; }
+	.MediaPostFooterNotes { background: url(http://static.tumblr.com/ubkenek/ggVlrkrn1/notes-icon.png) no-repeat; }
+
+	.MediaPostFooterTags a { margin: 0 10px 0 0; }
+
+	.Quote {
+		width: 500px;
+		float: left;
+		clear: none;
+		padding: 20px;
+		background: url(http://static.tumblr.com/ubkenek/8Zhlpqjuw/quotebg.jpg) repeat;
+
+		font-family: Georgia, 'Times New Roman', serif;
+		font-size: 25px;
+		color: rgb(63,63,61);
+		text-shadow: 1px 1px 0px rgb(250,251,255);
+		border: 1px solid rgb(179,184,188);
+		-webkit-border-radius: 4px;
+		   -moz-border-radius: 4px;
+				border-radius: 4px; }
+	
+	.QuoteArrow {
+		width: 500px;
+		height: 19px;
+		margin: -1px 0 10px 0;
+		float: left;
+		clear: none;
+		background: url(http://static.tumblr.com/ubkenek/iTulpqkvc/quotearrow.jpg) no-repeat 40px 0; }
+		
+	.Source { width: 540px; float: left; clear: none; margin: 0 0 10px 0; }
+	
+	.ChatBody { width: 540px; float: left; margin: 0 0 10px 0; }
+
+	.ChatBody li.odd, .ChatBody li.even {
+		float: left;
+		clear: both;
+		padding: 4px 7px;
+		margin: 0 0 5px 0;
+		border: 1px solid rgb(184,189,193);
+		color: rgb(62,62,62);
+		background-color: rgb(196,203,209);
+		font-weight: bold;
+		text-decoration: none;			
+
+		-webkit-border-radius: 4px;
+		   -moz-border-radius: 4px;
+		        border-radius: 4px; }
+
+	.ChatBody .ChatLabel { font-weight: bold; }
+	.ChatBody li.even .ChatLabel { color: rgb(94,160,186); }
+
+	.VideoPost object, .VideoPost embed, .VideoPost iframe {
+		width: 778px !important;
+		float: left;
+		max-width: 778px;
+		height: 435px;
+		
+		-webkit-border-radius: 4px 4px 0 0;
+		   -moz-border-radius: 4px 4px 0 0;
+				border-radius: 4px 4px 0 0; }
+		
+	.AlbumArtWrapper {
+		width: 160px;
+		height: 160px;
+		margin: 0 20px 10px 0;
+		float: left; 
+		clear: none;
+		background: #a9b6c3;
+
+		border: 1px solid #e8ebee;
+		-webkit-border-radius: 4px;
+		   -moz-border-radius: 4px;
+				border-radius: 4px;
+	
+		-webkit-box-shadow: inset 0 0 7px rgb(146,157,168);
+		   -moz-box-shadow: inset 0 0 7px rgb(146,157,168);
+		        box-shadow: inset 0 0 7px rgb(146,157,168); }
+
+	.AlbumArtShine {
+		width: 136px;
+		height: 136px;
+		margin: 9px 0 0 9px;
+		float: left;
+		clear: none;
+		position: absolute;
+		pointer-events:none;
+		z-index: 2;
+		background: url(http://static.tumblr.com/ubkenek/pkclrkvfh/albumart-overly.png) no-repeat; }
+
+	.AlbumArtWrapper img {
+		width: 140px;
+		height: 140px;
+		margin: 9px 0 0 9px;
+		border: 1px solid #eceded;
+
+		-webkit-box-shadow: 0 0 2px rgb(158,165,170);
+		   -moz-box-shadow: 0 0 2px rgb(158,165,170);
+		        box-shadow: 0 0 2px rgb(158,165,170); }
+
+	.MusicTitle:link, .MusicTitle:visited {
+		width: 358px;
+		font-size: 22px;
+		float: left;
+		clear: none;
+		font-weight: bold;
+		text-decoration: none;
+		color: rgb(62,62,62);
+		position: relative; }
+
+	.MusicTitle:hover { color: rgb(73,93,100); }
+	.MusicTitle:active { top:1px; }
+	.PlayCount { width: 358px; float: left;  margin: 0 0 20px 0; font-style: italic; }
+	.AudioPlater { width: 358px; }
+	.AudioCaption, .AudioPlayer { float: left; clear: none; margin: 0 0 10px 0; }
+
+	.asker { margin: 0 10px 0 0; }
+	.Question { font-style: italic; margin: 0 0 10px 0; }
+	.Question, .Answer { width: 540px; float: left; clear: none; }
+	.QuestionHighlight { width: 540px; float: left; clear: both; font-weight: bold; font-style: normal; }
+
+	/*========================================================
+		Notes
+	========================================================*/
+	
+	.notes {
+		width: 780px;
+		float: left;
+		clear: both;
+		margin: 0 0 60px 0;
+		background: #a9b6c3;
+
+		border: 1px solid #e8ebee;
+		-webkit-border-radius: 4px;
+		   -moz-border-radius: 4px;
+				border-radius: 4px;
+	
+		-webkit-box-shadow: inset 0 0 7px rgb(146,157,168);
+		   -moz-box-shadow: inset 0 0 7px rgb(146,157,168);
+		        box-shadow: inset 0 0 7px rgb(146,157,168); }
+
+	ol.notes li.note { 
+		padding: 10px; 
+		background: url(http://static.tumblr.com/ubkenek/OVYlrl36h/border-bottom.jpg) repeat-x bottom;
+		border-bottom: 1px solid #eaedef; }
+
+	ol.notes li.note:last-of-type { border: none; background: none; }
+	ol.notes li.note img.avatar { vertical-align: -4px; margin-right: 10px; width: 16px; height: 16px; }
+	ol.notes li.note blockquote { border-color: #eee; padding: 4px 10px; margin: 10px 0px 0px 25px; }
+	ol.notes li.note img.avatar { vertical-align: -4px; margin-right: 10px; width: 16px; height: 16px; border: 1px solid #e8ebee; }
+	.notes a:link, .notes a:visited { color: #3E3E3E; }
+
+	/*========================================================
+		Footer
+	========================================================*/
+	
+	#Footer { width: 780px; margin: -44px 0 0 20px; clear: both; float: left; padding-bottom: 50px; }
+
+	.Pagination {
+		width: 770px;
+		clear: both;
+		float: left;
+		margin: -30px 0 0 0;
+		padding: 0 10px 10px;
+		background: url(http://static.tumblr.com/ubkenek/OVYlrl36h/border-bottom.jpg) repeat-x bottom;
+		border-bottom: 1px solid #d1d8df;
+		font-weight: bold;
+		font-size: 17px;
+		color: #464646; }
+
+	.Pagination a:link, .Pagination a:visited { text-decoration: none; color: rgb(73,93,100); position: relative; }
+	.Pagination a:hover { color: rgb(62,62,62); }
+	.Pagination a:active { top:1px; }
+
+	#TotlePages{ float: left; clear: none; }
+	#PageOf { font-family: Georgia, "Times New Roman", Serif; font-style: italic; font-weight: normal; }
+	#Next, #Back { float: right; clear: none; }
+	#Next { margin: 0 0 0 20px; }
+	#Copyright { float: left; clear: both; font-size: 11px; margin: 10px 0 0 10px; }
+
+	#PermalinkCopyright {
+		width: 760px;
+		clear: both;
+		float: left;
+		margin: 30px 0 0 0;
+		padding: 10px 10px 10px;
+		background: url(http://static.tumblr.com/ubkenek/OVYlrl36h/border-bottom.jpg) repeat-x bottom;
+		border-top: 1px solid #9ea5aa;
+		border-bottom: 1px solid #d1d8df;
+		font-size: 11px;
+		color: #464646; }
+
+	/*========================================================
+		Disqus
+	========================================================*/
+	
+	.Disqus {
+		width: 780px;
+		float: left;
+		clear: both;
+		margin: 0 0 40px 0; }
+
+	.DisqusCredit { font-size: 11px; }
+	#dsq-pagination, .dsq-pagination { margin:0 !important; padding:0 !important; }
+	#dsq-global-toolbar { margin: 0; text-shadow: none; }
+
+	/*========================================================
+		Custom CSS
+	========================================================*/
+	
+	{customcss}
+	
+	</style>
+
+	<meta name="if:Infinite Scroll" content="0"/>
+	
+	<meta name="text:Disqus Shortname" content=""/>
+	<meta name="text:Facebook Username" content=""/>
+	<meta name="text:Twitter Username" content=""/>
+	<meta name="text:Sub Title" content="..."/>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+		
+			//About slide down
+			$('#SlideDown').hide();
+			$('a#InfoButton').click(function() {
+				$('#SlideDown').slideToggle("fast");
+				return false;
+			});
+			
+			//Tumblr infinite scroll
+			$('#Body').infinitescroll({
+				navSelector  : "div.Pagination",
+				nextSelector : "div#Next a:link",
+				itemSelector : "#Posts",
+				loadingText  : "",
+				donetext     : "",
+				loadingImg   : "http://static.tumblr.com/ubkenek/4ufljjmjr/loading.gif"
+			});
+			
+		});	
+	</script>
+
+</head>
+
+<body>
+	
+	<div id="SlideDown" class="Clearfix">
+		
+		<div id="ProfilePhoto" >
+			<img src="{PortraitURL-128}" alt="Profile Photo"/>
+		</div><!-- End Profile Photo -->
+	
+		<div id="Description">
+			<div id="DescriptionTitle">About</div>
+			{Description}
+		</div><!-- End Description -->
+		
+		<div id="Links">
+			<div id="SocialLinks">
+			   {block:IfFacebookUsername}<a href="http://facebook.com/{text:Facebook Username}">Facebook</a>{/block:IfFacebookUsername}
+			   {block:IfTwitterUsername}<a href="http://twitter.com/{text:Twitter Username}">Twitter</a>{/block:IfTwitterUsername}
+			   
+			   {block:HasPages}{block:Pages}<a href="{URL}">{Label}</a>{/block:Pages}{/block:HasPages}
+			</div><!-- End Social Links -->
+			
+			<div id="MetaLinks">
+				<a id="Archive" href="/archive" title="Archive">Archive</a>
+				<a id="RSSFeed" href="{RSS}" title="RSS Feed">RSS Feed</a>
+				<a id="Ask" href="/ask" title="Ask Me Anything">Ask Me Anything</a>
+			</div><!-- End Meta links -->
+		</div><!-- End Links -->
+		
+	</div>
+	
+	<div class="Line"></div>
+	
+	<div id="Wrapper" class="Clearfix">
+
+		<div id="Header">
+			<a id="InfoButton" href="#"></a>
+			<div id="BlogTitle"><a href="/">{Title}</a></div>
+			<div id="SubTitle">{block:IfSubTitle}{text:Sub Title}{/block:IfSubTitle}</div>
+		</div><!-- End Header -->
+	
+	
+		<div id="Body" class="Clearfix">
+			
+			<div id="Posts" class="Clearfix">	
+			{block:Posts}
+		
+				{block:Photo}
+				<div class="PhotoPost">
+			
+					<div class="Media">
+						<div class="MediaOverlay"></div>
+						{LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>{LinkCloseTag}
+					</div><!-- End Media -->
+				
+					{block:Caption}
+					<div class="Caption"><span class="CaptionLS"></span>{Caption}<span class="CaptionRS"></span></div>
+					{/block:Caption}
+				
+					<div class="MediaPostFooter">
+						<span class="MediaPostFooterLS"></span>
+						{block:Date}<a class="PostDate" href="{Permalink}" title="Date posted on">{DayOfMonth}{DayOfMonthSuffix} {Month} {Year}</a>{/block:Date}
+						{block:NoteCount}<a class="MediaPostFooterNotes" href="{Permalink}" title="Notes">{NoteCount}</a>{block:NoteCount}
+						{block:HasTags}<div class="MediaPostFooterTags">{block:Tags}<a href="{TagURL}" title="{Tag}">#{Tag}</a>{/block:Tags}</div>{/block:HasTags}
+						<span class="MediaPostFooterRS"></span>
+					</div><!-- End Media Post Footer -->
+				
+				</div><!-- End Photo Post -->
+				{/block:Photo}
+			
+				{block:Text}
+				<div class="TextPost">
+					{block:Title}
+					<div class="PostTitle"><a href="{Permalink}" title="{Title}">{Title}</a></div>
+					{/block:Title}
+				
+					<div class="PostBody">
+						{Body}
+					</div>
+				
+					<div class="PostMeta">
+						{block:Date}<a class="PostDate" href="{Permalink}" title="Date Postsed">{DayOfMonth}{DayOfMonthSuffix} {ShortMonth} {Year}</a>{/block:Date}
+						{block:NoteCount}<a class="PostNotes" href="{Permalink}" title="Notes">{NoteCount} Notes</a>{block:NoteCount}
+					
+						{block:HasTags}
+						<div class="PostTags">
+							{block:Tags}
+							<a href="{TagURL}">{Tag}</a>
+							{/block:Tags}
+						</div><!-- End Post Tags -->
+						{/block:HasTags}
+					</div><!-- End Post Meta -->
+			
+				</div><!-- End Text Post -->
+				{/block:Text}
+			
+				{block:Link}
+				<div class="LinkPost">
+		
+					<div class="PostBody">
+						<div class="PostTitle"><a href="{URL}" {Target}>{Name}</a></div>
+						{block:Description}{Description}{/block:Description}
+					</div><!-- End Post Body -->
+				
+					<div class="PostMeta">
+						{block:Date}<a class="PostDate" href="{Permalink}" title="Date Postsed">{DayOfMonth}{DayOfMonthSuffix} {ShortMonth} {Year}</a>{/block:Date}
+						{block:NoteCount}<a class="PostNotes" href="{Permalink}" title="Notes">{NoteCount} Notes</a>{block:NoteCount}
+					
+						{block:HasTags}
+						<div class="PostTags">
+							{block:Tags}
+							<a href="{TagURL}">{Tag}</a>
+							{/block:Tags}
+						</div><!-- Post Tags -->
+						{/block:HasTags}
+					</div><!-- End Post Meta -->
+				
+				</div><!-- End Link Post -->
+				{/block:Link}
+			
+				{block:Quote}
+				<div class="QuotePost">
+			
+					<div class="PostBody">
+						<div class="Quote">"{Quote}"</div>
+						<div class="QuoteArrow"></div>
+						{block:Source}<div class="Source">&mdash; {Source}</div>{/block:Source}
+					</div><!-- End Post Body -->
+				
+					<div class="PostMeta">
+						{block:Date}<a class="PostDate" href="{Permalink}" title="Date Postsed">{DayOfMonth}{DayOfMonthSuffix} {ShortMonth} {Year}</a>{/block:Date}
+						{block:NoteCount}<a class="PostNotes" href="{Permalink}" title="Notes">{NoteCount} Notes</a>{block:NoteCount}
+					
+						{block:HasTags}
+						<div class="PostTags">
+							{block:Tags}
+							<a href="{TagURL}">{Tag}</a>
+							{/block:Tags}
+						</div><!-- End Post Tags -->
+						{/block:HasTags}
+					</div><!-- End Post Meta -->
+				
+				</div><!-- End Quote Post -->
+				{/block:Quote}
+			
+				{block:Chat}
+				<div class="ChatPost">
+             
+					<ul class="ChatBody">
+					{block:Title}<div class="PostTitle"><a href="{Permalink}">{Title}</a></div>{/block:Title}
+					{block:Lines}
+						<li class="{Alt} user_{UserNumber}">
+							{block:Label}<span class="ChatLabel">{Label}</span>{/block:Label}
+							{Line}
+						</li>
+					{/block:Lines}
+					</ul><!-- End Chat Body -->
+				
+					<div class="PostMeta">
+						{block:Date}<a class="PostDate" href="{Permalink}" title="Date Postsed">{DayOfMonth}{DayOfMonthSuffix} {ShortMonth} {Year}</a>{/block:Date}
+						{block:NoteCount}<a class="PostNotes" href="{Permalink}" title="Notes">{NoteCount} Notes</a>{block:NoteCount}
+					
+						{block:HasTags}
+						<div class="PostTags">
+							{block:Tags}
+							<a href="{TagURL}">{Tag}</a>
+							{/block:Tags}
+						</div><!-- End Post Tags -->
+						{/block:HasTags}
+					</div><!-- End Post Meta -->
+				
+				</div><!-- End Chat Post -->
+				{/block:Chat}
+			
+				{block:Video}
+				<div class="VideoPost">
+				
+					<div class="Media">
+						<div class="MediaOverlay"></div>
+						{Video-500}
+					</div><!-- End Media -->
+				
+					{block:Caption}
+					<div class="Caption"><span class="CaptionLS"></span>{Caption}<span class="CaptionRS"></span></div>
+					{/block:Caption}
+				
+					<div class="MediaPostFooter">
+						<span class="MediaPostFooterLS"></span>
+						{block:Date}<a class="PostDate" href="{Permalink}" title="Date posted on">{DayOfMonth}{DayOfMonthSuffix} {Month} {Year}</a>{/block:Date}
+						{block:NoteCount}<a class="MediaPostFooterNotes" href="{Permalink}" title="Notes">{NoteCount}</a>{block:NoteCount}
+						{block:HasTags}<div class="MediaPostFooterTags">{block:Tags}<a href="{TagURL}" title="{Tag}">#{Tag}</a>{/block:Tags}</div>{/block:HasTags}
+						<span class="MediaPostFooterRS"></span>
+					</div><!-- End Media Post Footer -->
+				
+				</div><!-- End Video Post -->
+				{/block:Video}
+
+				{block:Audio}
+				<div class="AudioPost">
+					<div class="PostBody">
+						{block:AlbumArt}
+						<div class="AlbumArtWrapper">
+							<div class="AlbumArt">
+								<div class="AlbumArtShine"></div>
+								<img src="{AlbumArtURL}" alt="Album Art"/>
+							</div><!-- End Album Art -->
+						</div><!-- Album Art Wrapper -->
+						{/block:AlbumArt}
+						<a href="{Permalink}" class="MusicTitle">{block:Artist}{Artist}{/block:Artist} {block:TrackName}- {TrackName}{/block:TrackName}</a>
+						<div class="PlayCount">{PlayCountWithLabel}</div>
+						<div class="AudioPlayer">{AudioPlayerWhite}</div>
+						{block:Caption}<div class="AudioCaption">{Caption}</div>{/block:Caption}
+					</div><!-- End Post Body -->
+
+					<div class="PostMeta">
+						{block:Date}<a class="PostDate" href="{Permalink}" title="Date Postsed">{DayOfMonth}{DayOfMonthSuffix} {ShortMonth} {Year}</a>{/block:Date}
+						{block:NoteCount}<a class="PostNotes" href="{Permalink}" title="Notes">{NoteCount} Notes</a>{block:NoteCount}
+						{block:HasTags}
+						<div class="PostTags">
+							{block:Tags}
+							<a href="{TagURL}">{Tag}</a>
+							{/block:Tags}
+						</div><!-- End Post Tags -->
+						{/block:HasTags}
+					</div><!-- End Post Meta -->
+				</div><!-- End Audio Post -->
+				{/block:Audio}
+
+				{block:Photoset}
+				<div class="PhotosetPost">
+					<div class="PostBody">
+						{Photoset-500}
+						{block:Caption}{Caption}{/block:Caption}
+					</div><!-- End Post Body -->
+
+					<div class="PostMeta">
+						{block:Date}<a class="PostDate" href="{Permalink}" title="Date Postsed">{DayOfMonth}{DayOfMonthSuffix} {ShortMonth} {Year}</a>{/block:Date}
+						{block:NoteCount}<a class="PostNotes" href="{Permalink}" title="Notes">{NoteCount} Notes</a>{block:NoteCount}
+						{block:HasTags}
+						<div class="PostTags">
+							{block:Tags}
+							<a href="{TagURL}">{Tag}</a>
+							{/block:Tags}
+						</div><!-- End Post Tags -->
+						{/block:HasTags}
+					</div><!-- End Post Meta -->
+				</div><!-- End Photoset Post -->
+				{/block:Photoset}
+
+				{block:Answer}
+				<div class="AnswerPost">
+				
+					<div class="PostBody">
+						<div class="PostTitle">{Asker} Asked:</div>
+						<span class="Question"><span class="QuestionHighlight">Question</span>{Question}</span>
+						<span class="Answer"><span class="QuestionHighlight">Answer</span>{Answer}</span>
+					</div><!-- End Post Body -->
+
+					<div class="PostMeta">
+						{block:Date}<a class="PostDate" href="{Permalink}" title="Date Postsed">{DayOfMonth}{DayOfMonthSuffix} {ShortMonth} {Year}</a>{/block:Date}
+						{block:NoteCount}<a class="PostNotes" href="{Permalink}" title="Notes">{NoteCount} Notes</a>{block:NoteCount}
+						{block:HasTags}
+						<div class="PostTags">
+							{block:Tags}
+							<a href="{TagURL}">{Tag}</a>
+							{/block:Tags}
+						</div><!-- End Post Tags -->
+						{/block:HasTags}
+					</div><!-- End Post Meta -->
+
+				</div><!-- End Answer Post -->
+				{/block:Answer}
+			
+				<div class="PostDivide"></div>
+
+				{block:PermalinkPage} 
+				{block:IfDisqusShortname}
+				<div class="Disqus">	
+					<script type="text/javascript">var disqus_url = "{Permalink}"; var disqus_title ="{block:PostTitle}{PostTitle}{/block:PostTitle}";</script>{block:Permalink}<div id="disqus_thread"></div>
+					<script type="text/javascript">
+					/**
+						* var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread] 
+					*/
+					(function() {
+						var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+						dsq.src = 'http://{text:Disqus Shortname}.disqus.com/embed.js';
+						(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+					})();
+					</script>
+					<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript={text:Disqus Shortname}">comments powered by Disqus.</a></noscript>
+					<a class="DisqusCredit" href="http://disqus.com">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+					{/block:Permalink}<script type="text/javascript">
+					var disqus_shortname = '{text:Disqus Shortname}';
+					(function () {
+						var s = document.createElement('script'); s.async = true;
+						s.src = 'http://disqus.com/forums/{text:Disqus Shortname}/count.js';
+						(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+					}());
+					</script>
+				</div><!-- End Disqus -->
+				{/block:IfDisqusShortname}
+				{/block:PermalinkPage}
+
+				{PostNotes}
+			
+			{/block:Posts}
+			</div>
+		
+		</div>
+	 
+		<div id="Footer">
+			{block:IndexPage} 
+			{block:IfNotInfiniteScroll}<div class="PostDivide"></div>{/block:IfNotInfiniteScroll}
+			<div class="Pagination">
+				<div id="TotlePages">
+					Page {CurrentPage} <span id="PageOf">of</span> {TotalPages}
+				</div><!-- End Totle Pages -->
+				
+				{block:NextPage}
+				<div id="Next">
+					<a href="{NextPage}" title="Go to the next page">Next</a>
+				</div><!-- End Next Page -->
+				{/block:NextPage}
+					
+				{block:PreviousPage}
+				<div id="Back">
+					<a href="{PreviousPage}" title="Go to the previous page">Back</a>
+				</div><!-- End Back Page -->
+				{/block:PreviousPage}
+			</div><!-- End Pagination -->
+			
+			<div id="Copyright">This blog is powered by <a href="http://tumblr.com" title="Tumblr">Tumblr</a> and designed by <a href="http://blog.samstefan.co.uk" title="Sam Stefan's website">Sam Stefan</a>.</div><!-- End Copyright -->
+			{/block:IndexPage}
+
+			{block:PermalinkPage}
+			<div id="PermalinkCopyright">This blog is powered by <a href="http://tumblr.com" title="Tumblr">Tumblr</a> and designed by <a href="http://blog.samstefan.co.uk" title="Sam Stefan's website">Sam Stefan</a>.</div><!-- End Permalink Copyright -->
+			{/block:PermalinkPage}
+		</div><!-- End Footer -->
+	
+	</div><!-- End Wrapper -->
+
+</body>
+</html>
