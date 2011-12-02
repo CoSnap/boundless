@@ -1,4 +1,4 @@
-# Vacant Tumblr Theme v2.1
+# Boundless Tumblr Theme v2.1
 
 [Demo](http://boundless.samstefan.co.uk) and
 [Tumblr Install](http://www.tumblr.com/theme/14660).
