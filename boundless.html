@@ -11,19 +11,18 @@
 
 	<title>{Title}</title>
 	
-	<!-- Favicon --> 
-	<link rel="shortcut icon" href="{Favicon}"/>
-	
-	<!-- RSS --> 
-	<link rel="alternate" type="application/rss+xml" href="{RSS}"/>
-	 
-	<!-- Meta Tags -->
-	{block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="{Favicon}" />
 
-	<!-- Stylesheets --> 
-	<link rel="stylesheet" type="text/css" href="http://static.tumblr.com/ubkenek/3sQlmxy8v/reset-min.css"/>
-	<link rel="stylesheet" type="text/css" href="http://static.tumblr.com/ubkenek/Xxrlrw4re/fonts.css"/>
+	<!-- RSS -->
+	<link rel="alternate" type="application/rss+xml" href="{RSS}" />
+
+	<!-- Meta Tags -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	{block:Description}<meta name="description" content="{MetaDescription}"/>{/block:Description}
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" type="text/css" href="http://static.tumblr.com/ubkenek/3sQlmxy8v/reset-min.css" />
 
 	<!-- JavaScript -->
 	<script type="text/javascript" src="http://static.tumblr.com/gpln05e/ao8kyw205/jquery-1.4.2.min.js"></script>
@@ -144,9 +143,9 @@
 	
 	#Links a:hover, .PostTags a:hover { opacity: 1; }
 	
-	#RSSFeed {padding: 4px 7px 4px 25px !important; background: url(http://static.tumblr.com/ubkenek/WIdlox3ak/rssfeedicon.jpg) 7px 5px no-repeat;}
-	#Archive {padding: 4px 7px 4px 25px !important; background: url(http://static.tumblr.com/ubkenek/z7Oloy2gk/archiveicon.jpg) 7px 5px no-repeat;}
-	#Ask {padding: 4px 7px 4px 25px !important; background: url(http://static.tumblr.com/ubkenek/17hloy3dk/askicon.jpg) 9px 5px no-repeat;}
+	#RSSFeed { padding: 4px 7px 4px 25px !important; background: url(http://static.tumblr.com/ubkenek/WIdlox3ak/rssfeedicon.jpg) 7px 5px no-repeat; }
+	#Archive { padding: 4px 7px 4px 25px !important; background: url(http://static.tumblr.com/ubkenek/z7Oloy2gk/archiveicon.jpg) 7px 5px no-repeat; }
+	#Ask { padding: 4px 7px 4px 25px !important; background: url(http://static.tumblr.com/ubkenek/17hloy3dk/askicon.jpg) 9px 5px no-repeat; }
 
 	/*========================================================
 		Page Content
@@ -250,7 +249,7 @@
 				border-radius: 4px 4px 0 0;
 	
 		-webkit-box-shadow: inset 0 0 7px rgba(0,0,0,0.7);
-		   -moz-box-shadow: inset 0 0 7px rgba(0,0,0,0.7); 
+		   -moz-box-shadow: inset 0 0 7px rgba(0,0,0,0.7);
 		        box-shadow: inset 0 0 7px rgba(0,0,0,0.7); }	
 
 	.PhotoPost img {
@@ -483,7 +482,7 @@
 	.Pagination a:hover { color: rgb(62,62,62); }
 	.Pagination a:active { top:1px; }
 
-	#TotlePages{ float: left; clear: none; }
+	#TotlePages { float: left; clear: none; }
 	#PageOf { font-family: Georgia, "Times New Roman", Serif; font-style: italic; font-weight: normal; }
 	#Next, #Back { float: right; clear: none; }
 	#Next { margin: 0 0 0 20px; }
@@ -519,16 +518,9 @@
 		Custom CSS
 	========================================================*/
 	
-	{customcss}
+	{CustomCSS}
 	
 	</style>
-
-	<meta name="if:Infinite Scroll" content="0"/>
-	
-	<meta name="text:Disqus Shortname" content=""/>
-	<meta name="text:Facebook Username" content=""/>
-	<meta name="text:Twitter Username" content=""/>
-	<meta name="text:Sub Title" content="..."/>
 	
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -553,6 +545,12 @@
 		});	
 	</script>
 
+	<meta name="if:Infinite Scroll" content="0"/>
+	<meta name="text:Disqus Shortname" content=""/>
+	<meta name="text:Facebook Username" content=""/>
+	<meta name="text:Twitter Username" content=""/>
+	<meta name="text:Sub Title" content="..."/>
+
 </head>
 
 <body>
@@ -565,14 +563,13 @@
 	
 		<div id="Description">
 			<div id="DescriptionTitle">About</div>
-			{Description}
+			{block:Description}{Description}{/block:Description}
 		</div><!-- End Description -->
 		
 		<div id="Links">
 			<div id="SocialLinks">
 			   {block:IfFacebookUsername}<a href="http://facebook.com/{text:Facebook Username}">Facebook</a>{/block:IfFacebookUsername}
 			   {block:IfTwitterUsername}<a href="http://twitter.com/{text:Twitter Username}">Twitter</a>{/block:IfTwitterUsername}
-			   
 			   {block:HasPages}{block:Pages}<a href="{URL}">{Label}</a>{/block:Pages}{/block:HasPages}
 			</div><!-- End Social Links -->
 			
@@ -616,7 +613,7 @@
 					<div class="MediaPostFooter">
 						<span class="MediaPostFooterLS"></span>
 						{block:Date}<a class="PostDate" href="{Permalink}" title="Date posted on">{DayOfMonth}{DayOfMonthSuffix} {Month} {Year}</a>{/block:Date}
-						{block:NoteCount}<a class="MediaPostFooterNotes" href="{Permalink}" title="Notes">{NoteCount}</a>{block:NoteCount}
+						{block:NoteCount}<a class="MediaPostFooterNotes" href="{Permalink}" title="Notes">{NoteCount}</a>{/block:NoteCount}
 						{block:HasTags}<div class="MediaPostFooterTags">{block:Tags}<a href="{TagURL}" title="{Tag}">#{Tag}</a>{/block:Tags}</div>{/block:HasTags}
 						<span class="MediaPostFooterRS"></span>
 					</div><!-- End Media Post Footer -->
@@ -636,7 +633,7 @@
 				
 					<div class="PostMeta">
 						{block:Date}<a class="PostDate" href="{Permalink}" title="Date Postsed">{DayOfMonth}{DayOfMonthSuffix} {ShortMonth} {Year}</a>{/block:Date}
-						{block:NoteCount}<a class="PostNotes" href="{Permalink}" title="Notes">{NoteCount} Notes</a>{block:NoteCount}
+						{block:NoteCount}<a class="PostNotes" href="{Permalink}" title="Notes">{NoteCount} Notes</a>{/block:NoteCount}
 					
 						{block:HasTags}
 						<div class="PostTags">
@@ -660,7 +657,7 @@
 				
 					<div class="PostMeta">
 						{block:Date}<a class="PostDate" href="{Permalink}" title="Date Postsed">{DayOfMonth}{DayOfMonthSuffix} {ShortMonth} {Year}</a>{/block:Date}
-						{block:NoteCount}<a class="PostNotes" href="{Permalink}" title="Notes">{NoteCount} Notes</a>{block:NoteCount}
+						{block:NoteCount}<a class="PostNotes" href="{Permalink}" title="Notes">{NoteCount} Notes</a>{/block:NoteCount}
 					
 						{block:HasTags}
 						<div class="PostTags">
@@ -685,7 +682,7 @@
 				
 					<div class="PostMeta">
 						{block:Date}<a class="PostDate" href="{Permalink}" title="Date Postsed">{DayOfMonth}{DayOfMonthSuffix} {ShortMonth} {Year}</a>{/block:Date}
-						{block:NoteCount}<a class="PostNotes" href="{Permalink}" title="Notes">{NoteCount} Notes</a>{block:NoteCount}
+						{block:NoteCount}<a class="PostNotes" href="{Permalink}" title="Notes">{NoteCount} Notes</a>{/block:NoteCount}
 					
 						{block:HasTags}
 						<div class="PostTags">
@@ -714,7 +711,7 @@
 				
 					<div class="PostMeta">
 						{block:Date}<a class="PostDate" href="{Permalink}" title="Date Postsed">{DayOfMonth}{DayOfMonthSuffix} {ShortMonth} {Year}</a>{/block:Date}
-						{block:NoteCount}<a class="PostNotes" href="{Permalink}" title="Notes">{NoteCount} Notes</a>{block:NoteCount}
+						{block:NoteCount}<a class="PostNotes" href="{Permalink}" title="Notes">{NoteCount} Notes</a>{/block:NoteCount}
 					
 						{block:HasTags}
 						<div class="PostTags">
@@ -743,7 +740,7 @@
 					<div class="MediaPostFooter">
 						<span class="MediaPostFooterLS"></span>
 						{block:Date}<a class="PostDate" href="{Permalink}" title="Date posted on">{DayOfMonth}{DayOfMonthSuffix} {Month} {Year}</a>{/block:Date}
-						{block:NoteCount}<a class="MediaPostFooterNotes" href="{Permalink}" title="Notes">{NoteCount}</a>{block:NoteCount}
+						{block:NoteCount}<a class="MediaPostFooterNotes" href="{Permalink}" title="Notes">{NoteCount}</a>{/block:NoteCount}
 						{block:HasTags}<div class="MediaPostFooterTags">{block:Tags}<a href="{TagURL}" title="{Tag}">#{Tag}</a>{/block:Tags}</div>{/block:HasTags}
 						<span class="MediaPostFooterRS"></span>
 					</div><!-- End Media Post Footer -->
@@ -770,7 +767,7 @@
 
 					<div class="PostMeta">
 						{block:Date}<a class="PostDate" href="{Permalink}" title="Date Postsed">{DayOfMonth}{DayOfMonthSuffix} {ShortMonth} {Year}</a>{/block:Date}
-						{block:NoteCount}<a class="PostNotes" href="{Permalink}" title="Notes">{NoteCount} Notes</a>{block:NoteCount}
+						{block:NoteCount}<a class="PostNotes" href="{Permalink}" title="Notes">{NoteCount} Notes</a>{/block:NoteCount}
 						{block:HasTags}
 						<div class="PostTags">
 							{block:Tags}
@@ -791,7 +788,7 @@
 
 					<div class="PostMeta">
 						{block:Date}<a class="PostDate" href="{Permalink}" title="Date Postsed">{DayOfMonth}{DayOfMonthSuffix} {ShortMonth} {Year}</a>{/block:Date}
-						{block:NoteCount}<a class="PostNotes" href="{Permalink}" title="Notes">{NoteCount} Notes</a>{block:NoteCount}
+						{block:NoteCount}<a class="PostNotes" href="{Permalink}" title="Notes">{NoteCount} Notes</a>{/block:NoteCount}
 						{block:HasTags}
 						<div class="PostTags">
 							{block:Tags}
@@ -814,7 +811,7 @@
 
 					<div class="PostMeta">
 						{block:Date}<a class="PostDate" href="{Permalink}" title="Date Postsed">{DayOfMonth}{DayOfMonthSuffix} {ShortMonth} {Year}</a>{/block:Date}
-						{block:NoteCount}<a class="PostNotes" href="{Permalink}" title="Notes">{NoteCount} Notes</a>{block:NoteCount}
+						{block:NoteCount}<a class="PostNotes" href="{Permalink}" title="Notes">{NoteCount} Notes</a>{/block:NoteCount}
 						{block:HasTags}
 						<div class="PostTags">
 							{block:Tags}
@@ -829,7 +826,7 @@
 			
 				<div class="PostDivide"></div>
 
-				{block:PermalinkPage} 
+				{block:PermalinkPage}
 				{block:IfDisqusShortname}
 				<div class="Disqus">	
 					<script type="text/javascript">var disqus_url = "{Permalink}"; var disqus_title ="{block:PostTitle}{PostTitle}{/block:PostTitle}";</script>{block:Permalink}<div id="disqus_thread"></div>
