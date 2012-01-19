@@ -23,6 +23,6 @@ Boundless may be used by anyone for any purpose, in both a personal and commerci
 
 ## Credits
 
-Boundless was created by the [Sam Stefan](http://samstefan.co.uk).
+Boundless was created by [Sam Stefan](http://samstefan.co.uk).
 
 Infinite Scroll jQuery Plugin Copyright Paul Irish, Licensed GPL & MIT.
