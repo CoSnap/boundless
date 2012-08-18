@@ -4,9 +4,9 @@
 <head>
 
 	<!--
-	Boundless - 2.1
-	Designd by Sam Stefan.
-	samstefan.co.uk
+	Boundless - 2.1.1
+	Designed by CoSnap
+	cosnap.co.uk
 	-->
 
 	<title>{Title}</title>
@@ -72,7 +72,7 @@
 	#InfoButton { 
 		width: 20px;
 		height: 20px;
-		background: url(http://static.tumblr.com/ubkenek/OEolpd9t3/infoicon.jpg) no-repeat;
+		background: url(http://static.tumblr.com/ubkenek/vcBm8yq3g/infoicon.png) no-repeat;
 		margin: 0 auto;
 		clear: both;
 		display: block;
@@ -297,8 +297,8 @@
 	.PostMeta { width: 140px; margin: 0 0 0 90px; float: right; clear: none; font-weight: bold; }
 	.PostDate, .PostNotes { padding: 0 0 0 30px; margin: 0 0 10px 0; color: rgb(62,62,62); }
 	.PostTags { float: left; clear: both; margin: 10px 0 0 0; }
-	.PostDate { background: url(http://static.tumblr.com/ubkenek/VBylph1e2/postdateicon.jpg) no-repeat; }
-	.PostNotes { background: url(http://static.tumblr.com/ubkenek/MZJlph3w6/likesicon.jpg) no-repeat; }
+	.PostDate { background: url(http://static.tumblr.com/ubkenek/Ph1m8yov2/archiveicon.png) no-repeat; }
+	.PostNotes { background: url(http://static.tumblr.com/ubkenek/WyVm8yoxd/likesicon.png) no-repeat; }
 
 	.MediaPostFooter a:link, .MediaPostFooter a:visited { text-decoration: none; color: #6c6c6c; }
 	.MediaPostFooter a:hover { color: #3E3E3E; }
@@ -337,7 +337,7 @@
 		margin: -1px 0 10px 0;
 		float: left;
 		clear: none;
-		background: url(http://static.tumblr.com/ubkenek/iTulpqkvc/quotearrow.jpg) no-repeat 40px 0; }
+		background: url(http://static.tumblr.com/ubkenek/RBQm8ypjn/quotearrow.png) no-repeat 40px 0; }
 		
 	.Source { width: 540px; float: left; clear: none; margin: 0 0 10px 0; }
 	
@@ -468,7 +468,7 @@
 	#Footer { width: 780px; margin: -44px 0 0 20px; clear: both; float: left; padding-bottom: 50px; }
 
 	.Pagination {
-		width: 770px;
+		width: 760px;
 		clear: both;
 		float: left;
 		margin: -30px 0 0 0;
@@ -863,8 +863,9 @@
 		</div>
 	 
 		<div id="Footer">
-			{block:IndexPage} 
+			{block:IndexPage}
 			{block:IfNotInfiniteScroll}<div class="PostDivide"></div>{/block:IfNotInfiniteScroll}
+			{block:Pagination}
 			<div class="Pagination">
 				<div id="TotlePages">
 					Page {CurrentPage} <span id="PageOf">of</span> {TotalPages}
@@ -882,6 +883,7 @@
 				</div><!-- End Back Page -->
 				{/block:PreviousPage}
 			</div><!-- End Pagination -->
+			{/block:Pagination}
 			
 			<div id="Copyright">This blog is powered by <a href="http://tumblr.com" title="Tumblr">Tumblr</a> and designed by <a href="http://blog.samstefan.co.uk" title="Sam Stefan's website">Sam Stefan</a>.</div><!-- End Copyright -->
 			{/block:IndexPage}
@@ -889,6 +891,7 @@
 			{block:PermalinkPage}
 			<div id="PermalinkCopyright">This blog is powered by <a href="http://tumblr.com" title="Tumblr">Tumblr</a> and designed by <a href="http://blog.samstefan.co.uk" title="Sam Stefan's website">Sam Stefan</a>.</div><!-- End Permalink Copyright -->
 			{/block:PermalinkPage}
+			{/block:Pagination}
 		</div><!-- End Footer -->
 	
 	</div><!-- End Wrapper -->
